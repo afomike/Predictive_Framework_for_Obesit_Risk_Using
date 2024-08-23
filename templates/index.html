@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Degree Class Predictor</title>
+    <script src="/static/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body{
+            background: url("{{ url_for('static', filename='image/background.jpg') }}");
+ 
+        }
+        .image {
+        background: url("../static/image/LOGO.jpg") no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px; 
+        margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <h1>Degree Class Predictor</h1>
+        <div class="image"></div>
+        <form action="/predict" method="post" onsubmit="handleSubmit(event)">
+            <label for="AVG_GRADE_HS">Average Grade in High School:</label>
+            <input type="text" id="AVG_GRADE_HS" name="AVG_GRADE_HS">
+            <label for="SCHOOL_TYPE">Type of School:</label>
+            <input type="text" id="SCHOOL_TYPE" name="SCHOOL_TYPE">
+            <label for="GAP_BEFORE_DEGREE">Gap Before Degree:</label>
+            <input type="text" id="GAP_BEFORE_DEGREE" name="GAP_BEFORE_DEGREE">
+            <label for="MAJOR">Major:</label>
+            <input type="text" id="MAJOR" name="MAJOR">
+            <label for="GPA">Current GPA:</label>
+            <input type="text" id="GPA" name="GPA">
+            <label for="PREV_GPA">Previous GPA:</label>
+            <input type="text" id="PREV_GPA" name="PREV_GPA">
+            <label for="HOURS_STUDY">Hours of Study per Week (e.g., 1 HOUR 30 MINUTES or 4):</label>
+            <input type="text" id="HOURS_STUDY" name="HOURS_STUDY">
+            <label for="STUDY_SCHEDULE">Study Schedule:</label>
+            <input type="text" id="STUDY_SCHEDULE" name="STUDY_SCHEDULE">
+            <label for="EXTRA_ACTIVITIES_HOURS">Extracurricular Activities Hours per Week (e.g., 2 HOURS 15 MINUTES or 1):</label>
+            <input type="text" id="EXTRA_ACTIVITIES_HOURS" name="EXTRA_ACTIVITIES_HOURS">
+            <label for="PART_TIME_JOB">Part-Time Job:</label>
+            <input type="text" id="PART_TIME_JOB" name="PART_TIME_JOB">
+            <!-- <label for="JOB_HOURS">Part-Time Job Hours per Week :</label> -->
+            <!-- <input type="text" id="JOB_HOURS" name="JOB_HOURS">> -->
+            <label for="MOTIVATION">Motivation:</label>
+            <input type="text" id="MOTIVATION" name="MOTIVATION">
+            <label for="STRESS_MANAGEMENT">Stress Management:</label>
+            <input type="text" id="STRESS_MANAGEMENT" name="STRESS_MANAGEMENT">
+            <input type="submit" value="Predict">
+        </form>
+        <!-- <h2>fffffffffffffffffffffff</h2> -->
+        {% if prediction %} -->
+             
+            <h2>{{ prediction }}</h2>
+        {% endif %}
+        <!-- "<div id="result"></div> -->
+    
+    </div>
+    <!-- <button class="scroll-up">Scroll Up</button>
+    <button class="scroll-down">Scroll Down</button> -->
+</body>
+</html>
