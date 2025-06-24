@@ -1,14 +1,28 @@
 from flask import Flask, request, jsonify, render_template
 import joblib
+import pickle
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 
 app = Flask(__name__)
 
 # Load the trained model and encoders once
-model = joblib.load('model/Obesit_Risk_Using_Behavioral_and_Dietary_Pattern.joblib')
-one_hot_encoder = joblib.load('model/one_hot_encoder.joblib')
-label_encoders = joblib.load('model/label_encoders.joblib')
+# model = joblib.load('model/Obesit_Risk_Using_Behavioral_and_Dietary_Pattern.joblib')
+# one_hot_encoder = joblib.load('model/one_hot_encoder.joblib')
+# label_encoders = joblib.load('model/label_encoders.joblib')
+
+# Load model
+with open('model/Obesit_Risk_Using_Behavioral_and_Dietary_Pattern.pkl', 'rb') as f:
+    gb_model = pickle.load(f)
+
+# Load one-hot encoder
+with open('model/one_hot_encoder.pkl', 'rb') as f:
+    one_hot_encoder = pickle.load(f)
+
+# Load label encoders
+with open('model/label_encoders.pkl', 'rb') as f:
+    label_encoders = pickle.load(f)
+
 
 # Define preprocessing function
 def preprocess_input(data):
