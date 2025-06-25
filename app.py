@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 # Load model
 with open('model/Obesit_Risk_Using_Behavioral_and_Dietary_Pattern.pkl', 'rb') as f:
-    gb_model = pickle.load(f)
+    model = pickle.load(f)
 
 # Load one-hot encoder
 with open('model/one_hot_encoder.pkl', 'rb') as f:
@@ -95,4 +95,4 @@ def predict():
         return render_template('index.html', prediction=f"Error: {str(e)}")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)
